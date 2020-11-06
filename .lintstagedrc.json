@@ -1,6 +1,6 @@
 {
     "*.{js, jsx}": [
-      "eslint 'src/**' --fix",
+      "yarn lint",
       "yarn test:staged"
     ]
   }
