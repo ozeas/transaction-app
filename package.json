@@ -3,9 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@testing-library/jest-dom": "4.2.4",
-    "@testing-library/react": "9.3.2",
-    "@testing-library/user-event": "7.1.2",
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-scripts": "3.4.3"
@@ -33,6 +30,16 @@
     ]
   },
   "devDependencies": {
-    "json-server": "0.16.2"
+    "@testing-library/jest-dom": "4.2.4",
+    "@testing-library/react": "9.3.2",
+    "@testing-library/user-event": "7.1.2",
+    "eslint": "^7.9.0",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
+    "husky": "^4.3.0",
+    "json-server": "0.16.2",
+    "lint-staged": "^10.4.0"
   }
 }
