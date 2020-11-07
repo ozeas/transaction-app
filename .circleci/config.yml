@@ -28,10 +28,10 @@ jobs:
             - ~/.cache
           key: v1-dependencies-{{ checksum "package.json" }}
 
+      - run: yarn lint
+      - run: yarn test
+
       - snyk/scan:
           fail-on-issues: false
           monitor-on-build: false
           severity-threshold: high
-
-      - run: yarn lint
-      - run: yarn test
