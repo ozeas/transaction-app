@@ -1,10 +1,15 @@
 version: 2.1
+orbs:
+  snyk: snyk/snyk@0.0.8
 jobs:
   build:
     docker:
       - image: circleci/node:12.9.1-browsers
 
     working_directory: ~/repo
+
+    environment:
+      SNYK_TOKEN: 506a9960-5b66-476e-8f90-0e8571dafd4a
 
     steps:
       - checkout
@@ -22,6 +27,11 @@ jobs:
             - ~/.npm
             - ~/.cache
           key: v1-dependencies-{{ checksum "package.json" }}
+
+      - snyk/scan:
+          fail-on-issues: false
+          monitor-on-build: false
+          severity-threshold: high
 
       - run: yarn lint
       - run: yarn test
