@@ -13,7 +13,7 @@
     "eject": "react-scripts eject",
     "lint": "eslint .",
     "server": "json-server ./server/db.json --middlewares ./server/status-middleware.js",
-    "test": "react-scripts test --passWithNoTests --watchAll",
+    "test": "react-scripts test --passWithNoTests --watchAll=false",
     "test:watch": "yarn test -- --watch",
     "test:staged": "yarn test -- --findRelatedTests"
   },
