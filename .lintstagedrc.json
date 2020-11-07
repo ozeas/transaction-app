@@ -1,5 +1,6 @@
 {
-    "*.{js, jsx}": [
+  "**/**/*.{js,jsx,md}": [
+      "pretty-quick --check",
       "yarn lint",
       "yarn test:staged"
     ]
