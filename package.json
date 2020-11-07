@@ -14,7 +14,7 @@
     "lint": "eslint .",
     "server": "json-server ./server/db.json --middlewares ./server/status-middleware.js",
     "test": "react-scripts test --passWithNoTests --watchAll=false",
-    "test:watch": "yarn test -- --watch",
+    "test:watch": "react-scripts test --passWithNoTests",
     "test:staged": "yarn test -- --findRelatedTests"
   },
   "eslintConfig": {
