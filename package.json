@@ -5,7 +5,8 @@
   "dependencies": {
     "react": "16.13.1",
     "react-dom": "16.13.1",
-    "react-scripts": "4.0.0"
+    "react-scripts": "4.0.0",
+    "snyk": "^1.424.4"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -15,7 +16,9 @@
     "server": "json-server ./server/db.json --middlewares ./server/status-middleware.js",
     "test": "react-scripts test --passWithNoTests --watchAll=false",
     "test:watch": "react-scripts test --passWithNoTests",
-    "test:staged": "yarn test -- --findRelatedTests"
+    "test:staged": "yarn test -- --findRelatedTests",
+    "snyk-protect": "snyk protect",
+    "prepare": "yarn run snyk-protect"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -43,5 +46,6 @@
     "lint-staged": "^10.4.0",
     "prettier": "^2.0.5",
     "pretty-quick": "^3.0.0"
-  }
+  },
+  "snyk": true
 }
