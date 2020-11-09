@@ -2,7 +2,7 @@ import ListTransactions from './list-transactions';
 
 describe('ListTransactions', () => {
   const request = {
-    getList: jest.fn()
+    getList: jest.fn(),
   };
 
   it('should call getList requests method', async () => {

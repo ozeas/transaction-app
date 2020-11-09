@@ -12,7 +12,7 @@ describe('InvalidListTransactionsError', () => {
   test.each([
     [400, 'notfound_error'],
     [500, 'internal_error'],
-    [408, 'timeout_error']
+    [408, 'timeout_error'],
   ])('%#: should %s throw %s exception', (codeError, typeError) => {
     expect(makeError(codeError)).toThrow(typeError);
   });

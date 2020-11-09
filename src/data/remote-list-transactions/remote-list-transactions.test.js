@@ -24,7 +24,7 @@ describe('RemoteListTransactions', () => {
   test.each([
     [500, 'internal_error'],
     [400, 'notfound_error'],
-    [408, 'timeout_error']
+    [408, 'timeout_error'],
   ])(
     '%#: should throw error when has status error response %s',
     async (status, resultError) => {
