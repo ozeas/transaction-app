@@ -16,9 +16,7 @@
     "server": "json-server ./server/db.json --middlewares ./server/status-middleware.js",
     "test": "react-scripts test --passWithNoTests --watchAll=false",
     "test:watch": "react-scripts test --passWithNoTests",
-    "test:staged": "yarn test -- --findRelatedTests",
-    "snyk-protect": "snyk protect",
-    "prepare": "yarn run snyk-protect"
+    "test:staged": "yarn test -- --findRelatedTests"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -41,11 +39,11 @@
     "@testing-library/user-event": "7.1.2",
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-prettier": "^3.1.4",
+    "faker": "^5.1.0",
     "husky": "^4.3.0",
     "json-server": "0.16.2",
     "lint-staged": "^10.4.0",
     "prettier": "^2.0.5",
     "pretty-quick": "^3.0.0"
-  },
-  "snyk": true
+  }
 }
