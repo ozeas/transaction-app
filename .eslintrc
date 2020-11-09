@@ -24,6 +24,7 @@
     "node": true
   },
   "globals": {
-    "document": true
+    "document": true,
+    "Promise": true
   }
 }
