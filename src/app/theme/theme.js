@@ -1,4 +1,12 @@
+const { sm, md, lg, xl } = {
+  sm: '48em',
+  md: '62em',
+  lg: '75em',
+  xl: '112.5em',
+};
+
 const theme = {
+  breakpoints: [sm, md, lg, xl],
   colors: {
     gray20: '#F2F2F3',
     gray300: '#72737A',
