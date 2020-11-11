@@ -10,7 +10,6 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.0",
     "rebass": "^4.0.7",
-    "reflexbox": "^4.0.6",
     "snyk": "^1.424.4",
     "styled-components": "^5.2.1",
     "styled-system": "^5.1.5"
@@ -24,8 +23,8 @@
     "test": "react-scripts test --passWithNoTests --watchAll=false",
     "test:watch": "react-scripts test --passWithNoTests",
     "test:staged": "yarn test --findRelatedTests",
-    "storybook": "start-storybook -p 6006 -s public --no-dll",
-    "build-storybook": "build-storybook -s public --no-dll"
+    "storybook": "start-storybook",
+    "build-storybook": "build-storybook"
   },
   "eslintConfig": {
     "extends": "react-app"
