@@ -21,7 +21,9 @@
     "server": "json-server ./server/db.json --middlewares ./server/status-middleware.js",
     "test": "react-scripts test --passWithNoTests --watchAll=false",
     "test:watch": "react-scripts test --passWithNoTests",
-    "test:staged": "yarn test -- --findRelatedTests"
+    "test:staged": "yarn test -- --findRelatedTests",
+    "storybook": "start-storybook -p 6006 -s public --no-dll",
+    "build-storybook": "build-storybook -s public --no-dll"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -39,10 +41,18 @@
     ]
   },
   "devDependencies": {
+    "@babel/core": "^7.12.3",
+    "@storybook/addon-actions": "^6.0.28",
+    "@storybook/addon-essentials": "^6.0.28",
+    "@storybook/addon-links": "^6.0.28",
+    "@storybook/node-logger": "^6.0.28",
+    "@storybook/preset-create-react-app": "^3.1.5",
+    "@storybook/react": "^6.0.28",
     "@testing-library/dom": "^7.26.5",
     "@testing-library/jest-dom": "4.2.4",
     "@testing-library/react": "9.3.2",
     "@testing-library/user-event": "7.1.2",
+    "babel-loader": "^8.2.1",
     "eslint": "^7.13.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-prettier": "^3.1.4",
