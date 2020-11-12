@@ -13,5 +13,9 @@ BasicUsage.args = { children: 'Default button' };
 BasicUsage.storyName = 'Basic usage';
 
 export const UsageWithIcon = Template.bind({});
-UsageWithIcon.args = { children: 'Create transaction', icon: 'add-fill' };
+UsageWithIcon.args = { children: 'With icon', icon: 'add-fill' };
 UsageWithIcon.storyName = 'With icon';
+
+export const UsageDisabled = Template.bind({});
+UsageDisabled.args = { children: 'Disabled button', disabled: true };
+UsageDisabled.storyName = 'With disabled';

@@ -1,5 +1,5 @@
 import React from 'react';
-import { node, string } from 'prop-types';
+import { bool, func, node, string } from 'prop-types';
 
 import Icon from '../icon/icon';
 import StyledButton, { WrapperIcon } from './button.style';
@@ -15,9 +15,17 @@ const Button = ({ children, icon, ...props }) => (
   </StyledButton>
 );
 
+Button.defaultProps = {
+  disabled: false,
+  func: () => {},
+  icon: null,
+};
+
 Button.propTypes = {
   children: node.isRequired,
+  disabled: bool,
   icon: string,
+  onClick: func,
 };
 
 export default Button;
