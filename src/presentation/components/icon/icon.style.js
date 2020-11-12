@@ -6,8 +6,7 @@ import { colorHover, iconColor } from '../utils/custom-props';
 const { size } = layout;
 
 const SVG = styled.svg`
-  display: inline-block;
-  vertical-align: middle;
+  display: flex;
   ${size}
   path {
     ${iconColor}

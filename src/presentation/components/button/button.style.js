@@ -5,8 +5,6 @@ import { color } from 'styled-system';
 export const WrapperIcon = styled.div`
   display: inline;
   margin-right: 10px;
-  height: 24px;
-  width: 24px;
 `;
 
 const StyledButton = styled.button`
@@ -20,9 +18,9 @@ const StyledButton = styled.button`
   color: ${themeGet('colors.white')};
   display: inline-flex;
   font-weight: ${themeGet('fontWeights.bold')};
-  height: 
   line-height: 24px;
   max-width: 328px;
+  height: 48px;
   outline: 0;
   padding: 12px 0 12px 0;
   width: 100%;
