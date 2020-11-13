@@ -1,6 +1,7 @@
 import styled, { css } from 'styled-components';
 import { Flex } from 'reflexbox';
 import { themeGet } from '@styled-system/theme-get';
+import InputMask from 'react-input-mask';
 
 const floatedLabel = css`
   transform: translate(0, -7px) scale(1);
@@ -27,7 +28,7 @@ export const Wrapper = styled(Flex).attrs({
   }
 `;
 
-export const InputStyled = styled.input`
+export const InputStyled = styled(InputMask)`
   box-sizing: border-box;
   max-width: 328px;
   width: 100%;
