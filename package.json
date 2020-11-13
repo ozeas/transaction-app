@@ -77,8 +77,6 @@
       "@http/(.*)": "<rootDir>/src/http/$1",
       "@domain/(.*)": "<rootDir>/src/domain/$1",
       "@main/(.*)": "<rootDir>/src/main/$1"
-    },
-    "resetMocks": true,
-    "restoreMocks": true
+    }
   }
 }
