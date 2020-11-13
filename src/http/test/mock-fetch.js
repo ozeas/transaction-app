@@ -1,6 +1,6 @@
 import faker from 'faker';
 
-import FetchHttpClient from '../fetch-http-client/fetch-http-client';
+import FetchHttpClient from '@http/fetch-http-client/fetch-http-client';
 
 export const mockHttpResponse = {
   body: faker.random.objectElement(),

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Create } from '../../../presentation/pages/transaction';
+import { Create } from '@presentation/pages/transaction';
 
 const makeCreate = () => <Create />;
 

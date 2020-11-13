@@ -1,5 +1,5 @@
-import InvalidListTransactionsError from '../../domain/list-transactions/errors/invalid-list-transactions-error';
-import httpStatusCode from '../http/http-status-code';
+import InvalidListTransactionsError from '@domain/list-transactions/errors/invalid-list-transactions-error';
+import httpStatusCode from '@data/http/http-status-code';
 
 class RemoteListTransactions {
   constructor(url, httpGetClient) {

@@ -3,7 +3,7 @@ import {
   mockHttpRequestError,
   mockHttpRequest,
   mockFetchHttpClient,
-} from '../test/mock-fetch';
+} from '@http/test/mock-fetch';
 
 describe('FetchHttpClient', () => {
   jest.spyOn(window, 'fetch');
