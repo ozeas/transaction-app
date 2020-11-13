@@ -9,6 +9,7 @@ const theme = {
   breakpoints: [sm, md, lg, xl],
   colors: {
     gray20: '#F2F2F3',
+    gray200: '#8B8B92',
     gray300: '#72737A',
     gray400: '#595A63',
     gray500: '#454550',
