@@ -48,7 +48,7 @@ export const Label = styled.label`
   color: ${themeGet('colors.gray200')};
   pointer-events: none;
   position: absolute;
-  transform: translate(12px, 13px) scale(1);
+  transform: translate(12px, 15px) scale(1);
   transform-origin: top left;
   transition: all 0.2s ease-out;
 

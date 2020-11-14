@@ -19,7 +19,7 @@ describe('Input', () => {
     expect(label).not.toBeNull();
     expect(input).not.toBeNull();
     expect(label).toHaveStyle(`
-      transform: translate(12px,13px) scale(1);
+      transform: translate(12px,15px) scale(1);
       background-color: transparent;
     `);
   });
