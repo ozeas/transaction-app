@@ -1,7 +1,7 @@
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import React from 'react';
 
-import { MakeCreate, MakeList } from '@app/main/pages';
+import { MakeCreate, MakeList } from '@main/pages';
 
 const Router = () => {
   return (
