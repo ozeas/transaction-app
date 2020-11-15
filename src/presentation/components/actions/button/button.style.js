@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 import { themeGet } from '@styled-system/theme-get';
-import { color } from 'styled-system';
+import { color, layout } from 'styled-system';
 
 const setDisabled = ({ disabled }) =>
   disabled &&
@@ -16,7 +16,7 @@ export const WrapperIcon = styled.div`
   margin-right: 10px;
 `;
 
-const StyledButton = styled.button`
+export const StyledButton = styled.button`
   -webkit-font-smoothing: antialiased;
   align-items: center;
   justify-content: center;
@@ -29,15 +29,17 @@ const StyledButton = styled.button`
   display: inline-flex;
   font-weight: ${themeGet('fontWeights.bold')};
   line-height: 24px;
-  max-width: 328px;
   height: 48px;
   outline: 0;
   padding: 12px 0 12px 0;
-  width: 100%;
   text-align: center;
 
   ${setDisabled}
   ${color}
+  ${layout}
 `;
 
-export default StyledButton;
+export const StyledLink = styled(StyledButton)`
+  padding: 0;
+  text-decoration: none;
+`;
