@@ -8,6 +8,7 @@ import { color, typography } from 'styled-system';
 const Text = styled(Box)`
   font-size: ${themeGet('fontSizes.1')}px;
   color: ${themeGet('colors.gray800')};
+  line-height: 24px;
 
   ${color}
   ${typography}
