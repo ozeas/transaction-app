@@ -1,7 +1,9 @@
 import styled, { css } from 'styled-components';
 import { Flex } from 'reflexbox';
+import { layout } from 'styled-system';
 import { themeGet } from '@styled-system/theme-get';
-import InputMask from 'react-input-mask';
+import NumberFormat from 'react-number-format';
+// import InputMask from 'react-input-mask';
 
 const floatedLabel = css`
   transform: translate(0, -7px) scale(1);
@@ -18,7 +20,7 @@ const setActiveLabel = ({ isActive }) =>
 
 export const Wrapper = styled(Flex).attrs({
   flexDirection: 'column',
-  minWidth: '350px',
+  width: 1,
 })`
   position: relative;
   z-index: 0;
@@ -28,9 +30,8 @@ export const Wrapper = styled(Flex).attrs({
   }
 `;
 
-export const InputStyled = styled(InputMask)`
+export const InputStyledMasked = styled(NumberFormat)`
   box-sizing: border-box;
-  max-width: 328px;
   width: 100%;
   height: 48px;
   padding: 12px;
@@ -40,6 +41,21 @@ export const InputStyled = styled(InputMask)`
   border: 1px solid ${themeGet('colors.gray200')};
   background: ${themeGet('colors.white')};
   color: ${themeGet('colors.gray400')};
+  ${layout}
+`;
+
+export const InputStyled = styled.input`
+  box-sizing: border-box;
+  width: 100%;
+  height: 48px;
+  padding: 12px;
+  outline: 0;
+  border: 1px solid ${themeGet('gray400')};
+  border-radius: ${themeGet('radii.0')}px;
+  border: 1px solid ${themeGet('colors.gray200')};
+  background: ${themeGet('colors.white')};
+  color: ${themeGet('colors.gray400')};
+  ${layout}
 `;
 
 export const Label = styled.label`
@@ -48,7 +64,7 @@ export const Label = styled.label`
   color: ${themeGet('colors.gray200')};
   pointer-events: none;
   position: absolute;
-  transform: translate(12px, 15px) scale(1);
+  transform: translate(12px, 13px) scale(1);
   transform-origin: top left;
   transition: all 0.2s ease-out;
 

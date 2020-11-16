@@ -1,60 +1,69 @@
-import React, { useState } from 'react';
-import { string, func } from 'prop-types';
+import React, { useState, forwardRef } from 'react';
+import { string, func, oneOf } from 'prop-types';
 
-import { Wrapper, InputStyled, Label } from './input.style';
+import { Wrapper, InputStyled, InputStyledMasked, Label } from './input.style';
 
-const Input = ({ id, label, mask, name, type, initialValue, onChange }) => {
-  const hasInitialValue = initialValue !== '';
-  const [value, setValue] = useState(initialValue);
-  const [isActive, setIsActive] = useState(hasInitialValue);
+// eslint-disable-next-line react/display-name
+const Input = forwardRef(
+  ({ label, id, initialValue, mode, onChange, ...props }, ref) => {
+    const hasInitialValue = initialValue !== '';
+    const [value, setValue] = useState(initialValue);
+    const [isActive, setIsActive] = useState(hasInitialValue);
 
-  const handleChange = ({ target }) => {
-    const { value } = target;
-    onChange(value);
-    setValue(value);
+    const handleChange = ({ target }) => {
+      const { name, value } = target;
+      onChange(name, value);
+      setValue(value);
 
-    if (value !== '') {
-      setIsActive(true);
-      return;
-    }
+      if (value !== '') {
+        setIsActive(true);
+        return;
+      }
 
-    setIsActive(false);
-  };
+      setIsActive(false);
+    };
 
-  return (
-    <Wrapper>
-      <InputStyled
-        type={type}
-        id={id}
-        name={name}
-        value={value}
-        mask={mask}
-        onChange={handleChange}
-      />
-      <Label htmlFor={id} isActive={isActive}>
-        {label}
-      </Label>
-    </Wrapper>
-  );
-};
+    return (
+      <Wrapper>
+        {mode === 'default' ? (
+          <InputStyled
+            ref={ref}
+            inputRef={(el) => (this.inputElem = el)}
+            onChange={handleChange}
+            value={value}
+            {...props}
+          />
+        ) : (
+          <InputStyledMasked
+            ref={ref}
+            onChange={handleChange}
+            value={value}
+            {...props}
+          />
+        )}
+        <Label htmlFor={id} isActive={isActive}>
+          {label}
+        </Label>
+      </Wrapper>
+    );
+  }
+);
 
 Input.defaultProps = {
   id: '',
-  name: '',
-  type: 'text',
   initialValue: '',
-  mask: null,
+  mode: 'default',
   onChange: () => {},
+  type: 'text',
 };
 
 Input.propTypes = {
   id: string,
-  label: string.isRequired,
-  name: string,
-  type: string,
   initialValue: string,
+  label: string.isRequired,
+  mode: oneOf(['default', 'masked']),
   onChange: func,
-  mask: string,
+  type: string,
 };
 
 export default Input;

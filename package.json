@@ -10,6 +10,7 @@
     "react-dom": "16.13.1",
     "react-hook-form": "^6.11.2",
     "react-input-mask": "^3.0.0-alpha.2",
+    "react-number-format": "^4.4.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.0",
     "rebass": "^4.0.7",
