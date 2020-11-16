@@ -9,7 +9,6 @@
     "react-app-rewired": "^2.1.6",
     "react-dom": "16.13.1",
     "react-hook-form": "^6.11.2",
-    "react-input-mask": "^3.0.0-alpha.2",
     "react-number-format": "^4.4.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.0",
@@ -72,7 +71,7 @@
   },
   "jest": {
     "moduleNameMapper": {
-      "@components/(.*)": "<rootDir>/src/presentation/components/$1",
+      "@components(.*)": "<rootDir>/src/presentation/components/$1",
       "@presentation/(.*)": "<rootDir>/src/presentation/$1",
       "@style-tokens": "<rootDir>/src/presentation/style-tokens",
       "@test/(.*)": "<rootDir>/src/presentation/test/$1",
