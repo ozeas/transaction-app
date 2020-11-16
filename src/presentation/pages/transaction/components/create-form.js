@@ -1,15 +1,16 @@
 import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
+import { func } from 'prop-types';
 
 import { Box, Button, Flex, Input } from '@components';
 import { fields } from './utils';
 
-const CreateForm = () => {
+const CreateForm = ({ createTransaction }) => {
   const { trigger, register, handleSubmit, setValue, formState } = useForm({
     mode: 'onChange',
   });
 
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data) => createTransaction(data);
 
   useEffect(() => {
     fields.defaultConfigs.forEach((field) => {
@@ -75,6 +76,10 @@ const CreateForm = () => {
       </Flex>
     </form>
   );
+};
+
+CreateForm.propTypes = {
+  createTransaction: func,
 };
 
 export default CreateForm;
