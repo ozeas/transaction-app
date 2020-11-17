@@ -3,12 +3,16 @@ import { fireEvent, waitForElement, act } from '@testing-library/react';
 
 import { renderWithTheme } from '@test/utils';
 import CreateForm from './create-form';
-import { randomInputName, fieldsInputs, queryByName } from './test/utils';
+import {
+  randomInputName,
+  fieldsWitchInputsValues,
+  queryByName,
+} from './test/mocks';
 
 const mockCreateTransaction = jest.fn();
 
 const setFilledInputs = async (container) => {
-  for (let field of Object.entries(fieldsInputs)) {
+  for (let field of Object.entries(fieldsWitchInputsValues)) {
     await act(async () => {
       await fireEvent.change(queryByName(field[0], container), {
         target: { value: field[1] },
@@ -63,7 +67,7 @@ describe('CreateForm', () => {
     expect(submitButton.disabled).toBe(true);
   });
 
-  it.only('should call createTransaction when form is submitted', async () => {
+  it('should call createTransaction when form is submitted', async () => {
     const { container } = makeComponent();
 
     await setFilledInputs(container);
@@ -71,7 +75,7 @@ describe('CreateForm', () => {
       await fireEvent.click(container.querySelector('button'));
     });
 
-    expect(mockCreateTransaction).toHaveBeenCalledWith(fieldsInputs);
+    expect(mockCreateTransaction).toHaveBeenCalledWith(fieldsWitchInputsValues);
     expect(mockCreateTransaction).toHaveBeenCalledTimes(1);
   });
 });
