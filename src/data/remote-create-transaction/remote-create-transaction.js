@@ -8,7 +8,6 @@ class RemoteCreateTransaction {
   }
 
   async createTransaction(params) {
-    console.log(params);
     const response = await this.httpGetClient({
       url: this.url,
       ...params,
