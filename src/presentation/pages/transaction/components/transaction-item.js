@@ -22,7 +22,7 @@ const TransactionItem = ({ amount, credit_card_holder_name, status }) => (
         {credit_card_holder_name}
       </Text>
       <Text fontSize={1} color="gray300" fontWeight="regular">
-        {statusDictionary[status]}
+        {statusDictionary[status] || ''}
       </Text>
     </Flex>
     <Flex justifyContent="space-between" mt={2}>
@@ -33,6 +33,12 @@ const TransactionItem = ({ amount, credit_card_holder_name, status }) => (
     </Flex>
   </Container>
 );
+
+TransactionItem.defaultProps = {
+  amount: 0,
+  credit_card_holder_name: '',
+  status: '',
+};
 
 TransactionItem.propTypes = {
   amount: number.isRequired,
