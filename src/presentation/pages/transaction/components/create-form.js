@@ -10,7 +10,7 @@ const CreateForm = ({ createTransaction }) => {
     mode: 'onChange',
   });
   const onSubmit = async (data) => {
-    const result = await createTransaction(data);
+    await createTransaction(data);
   };
 
   useEffect(() => {
