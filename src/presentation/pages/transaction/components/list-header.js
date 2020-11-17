@@ -16,13 +16,13 @@ const ListHeader = ({ amount, amountTransactions }) => (
       lineHeight="32px"
       fontWeight="bold"
     >
-      {numberFormat(amount)}
+      {numberFormat(amountTransactions)}
     </Text>
     <Text mt="24px" fontSize={1} fontWeight="bold">
       Valor total
     </Text>
     <Text mt={1} color="green100" fontSize="20px" fontWeight="bold">
-      {currencyFormat(amountTransactions)}
+      {currencyFormat(amount)}
     </Text>
   </Box>
 );
