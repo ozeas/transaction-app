@@ -25,3 +25,22 @@ export const fieldsWitchInputsValues = {
 
 export const queryByName = (name, container) =>
   container.querySelector(`[name="${name}"]`);
+
+export const inputValuesMock = {
+  [BUYER_DOCUMENT_FIELD]: {
+    input: '383.938.838-83',
+    output: '38393883883',
+  },
+  [CARD_NUMBER_FIELD]: {
+    input: '3838 3383 3383 3838',
+    output: '3838338333833838',
+  },
+  [EXPIRATION_DATE_FIELD]: {
+    input: '12/20',
+    output: '1220',
+  },
+  [AMOUNT_FIELD]: {
+    input: 'R$ 833.8373.838,83',
+    output: '8338373838.83',
+  },
+};
