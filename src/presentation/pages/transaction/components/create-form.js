@@ -9,8 +9,9 @@ const CreateForm = ({ createTransaction }) => {
   const { trigger, register, handleSubmit, setValue, formState } = useForm({
     mode: 'onChange',
   });
-
-  const onSubmit = (data) => createTransaction(data);
+  const onSubmit = async (data) => {
+    const result = await createTransaction(data);
+  };
 
   useEffect(() => {
     fields.defaultConfigs.forEach((field) => {

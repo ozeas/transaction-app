@@ -22,10 +22,6 @@ const Create = ({ createTransaction }) => (
 );
 
 Create.propTypes = {
-  createTransaction: () => {},
-};
-
-Create.propTypes = {
   createTransaction: func.isRequired,
 };
 
