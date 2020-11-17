@@ -28,8 +28,8 @@ const ListHeader = ({ amount, amountTransactions }) => (
 );
 
 ListHeader.defaultProps = {
-  amount: 103030.0,
-  amountTransactions: 24339.46,
+  amount: 0,
+  amountTransactions: 0,
 };
 
 ListHeader.propTypes = {

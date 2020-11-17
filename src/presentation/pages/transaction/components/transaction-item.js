@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { themeGet } from '@styled-system/theme-get';
+import { number, string } from 'prop-types';
 
 import { Box, Flex, Text } from '@components';
 import { currencyFormat } from '@presentation/utils';
@@ -13,23 +14,33 @@ const Container = styled(Box).attrs({
   border-bottom: 1px solid ${themeGet('colors.gray20')};
 `;
 
-const TransactionItem = () => (
-  <Container>
+const TransactionItem = ({
+  amount,
+  creditCardHolderName,
+  translatedStatus,
+}) => (
+  <Container data-testid="transactions-list">
     <Flex justifyContent="space-between">
       <Text fontWeight="bold" color="gray500">
-        João Silva
+        {creditCardHolderName}
       </Text>
       <Text fontSize={1} color="gray300" fontWeight="regular">
-        Recusada
+        {translatedStatus}
       </Text>
     </Flex>
     <Flex justifyContent="space-between" mt={2}>
       <Text fontWeight="regular">10/10/2020 10:30</Text>
       <Text fontWeight="bold" color="gray700">
-        {currencyFormat(100)}
+        {currencyFormat(amount)}
       </Text>
     </Flex>
   </Container>
 );
+
+TransactionItem.propTypes = {
+  amount: number.isRequired,
+  creditCardHolderName: string.isRequired,
+  translatedStatus: string.isRequired,
+};
 
 export default TransactionItem;
