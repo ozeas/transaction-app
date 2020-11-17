@@ -7,8 +7,11 @@ class RemoteListTransactions {
     this.httpGetClient = httpGetClient;
   }
 
-  async getList(params) {
-    const response = await this.httpGetClient(this.url, params);
+  async getList(method) {
+    const response = await this.httpGetClient({
+      url: this.url,
+      method,
+    });
 
     switch (response.status) {
       case httpStatusCode.ok:

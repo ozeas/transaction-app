@@ -4,7 +4,7 @@ class ListTransactions {
   }
 
   async getList() {
-    return await this.requester.getList();
+    return await this.requester.getList('get');
   }
 }
 
