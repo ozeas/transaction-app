@@ -1,2 +1,2 @@
-export { default as MakeCreate } from './make-create';
-export { default as MakeList } from './make-list';
+export { default as makeCreate } from './make-create';
+export { default as makeList } from './make-list';
