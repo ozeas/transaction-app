@@ -1,31 +1,35 @@
 import React from 'react';
+import { act } from '@testing-library/react';
 
 import { renderWithTheme } from '@test/utils';
 import List from './list';
-import { transactionsMock } from './test/mock';
+import { useLoadTransactionsMock } from './test/mock';
 
 const makeComponent = (props) => renderWithTheme(<List {...props} />);
 
 describe('List', () => {
   it('should show warning message when transactions prop is empty', () => {
     const { getByText, queryByTestId } = makeComponent({
-      amount: 0,
-      amountTransactions: 0,
-      transactions: [],
+      loadTransactionList: jest.fn().mockResolvedValue([]),
     });
 
     expect(queryByTestId(/transactions-list/i)).toBeNull();
     expect(getByText(/Não há transações cadastradas!/)).toBeInTheDocument();
   });
 
-  it('should show transactions list when transactions props is filled', () => {
-    const { queryByText, queryByTestId } = makeComponent({
-      amount: transactionsMock.amount,
-      amountTransactions: transactionsMock.amountTransactions,
-      transactions: transactionsMock.list,
-    });
+  it('should show transactions list when transactions props is filled', async () => {
+    let element;
+    await act(
+      async () =>
+        (element = await makeComponent({
+          loadTransactionList: jest
+            .fn()
+            .mockResolvedValue(useLoadTransactionsMock.transactions),
+        }))
+    );
+    const { queryByText, queryAllByTestId } = element;
 
-    expect(queryByTestId(/transactions-list/i)).toBeInTheDocument();
+    expect(queryAllByTestId(/transactions-list/i).length).toBe(2);
     expect(queryByText(/Não há transações cadastradas!/i)).toBeNull();
   });
 });
