@@ -12,10 +12,18 @@ describe('FetchHttpClient', () => {
     window.fetch.mockResolvedValueOnce(mockHttpResponse);
 
     const instance = mockFetchHttpClient();
-    await instance.request(mockHttpRequest);
+    const params = {
+      url: mockHttpRequest.url,
+      method: mockHttpRequest.method,
+    };
+
+    await instance.request(params);
 
     expect(window.fetch).toHaveBeenCalledTimes(1);
-    expect(window.fetch).toHaveBeenCalledWith(mockHttpRequest);
+    expect(window.fetch).toHaveBeenCalledWith(mockHttpRequest.url, {
+      mode: 'cors',
+      method: params.method,
+    });
   });
 
   it('should return correct response', async () => {
@@ -24,14 +32,14 @@ describe('FetchHttpClient', () => {
     const instance = mockFetchHttpClient();
     const responseMock = await instance.request(mockHttpRequest);
 
-    expect(responseMock).toEqual(mockHttpResponse);
+    expect(responseMock).toEqual(mockHttpResponse.result);
   });
 
   it('should return correct error', async () => {
-    window.fetch.mockResolvedValueOnce(mockHttpRequestError);
+    window.fetch.mockResolvedValueOnce(Promise.reject({ status: 500 }));
 
     const instance = mockFetchHttpClient();
     const responseMock = await instance.request(mockHttpRequest);
-    expect(mockHttpRequestError).toEqual(responseMock);
+    expect(responseMock).toEqual(mockHttpRequestError);
   });
 });
