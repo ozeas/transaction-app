@@ -1,12 +1,15 @@
 import React from 'react';
-import { number, arrayOf, shape, string } from 'prop-types';
+import { func } from 'prop-types';
 
 import { Button, Flex, Text } from '@components';
 import { Container, Header, Main } from '@presentation/pages/components';
 import { ListHeader, TransactionItem } from './components';
+import useLoadTransactions from './hooks/use-load-transactions';
 
-const List = ({ transactions, amount, amountTransactions }) => {
-  const hasTransactions = !!transactions.length;
+const List = ({ loadTransactionList }) => {
+  const { amount, amountTransactions, transactions } = useLoadTransactions(
+    loadTransactionList
+  );
 
   return (
     <Container>
@@ -16,7 +19,7 @@ const List = ({ transactions, amount, amountTransactions }) => {
         </Flex>
       </Header>
       <Main>
-        {hasTransactions ? (
+        {transactions.length ? (
           transactions.map((item) => (
             <TransactionItem key={item.id} {...item} />
           ))
@@ -36,14 +39,12 @@ const List = ({ transactions, amount, amountTransactions }) => {
 };
 
 List.defaultProps = {
-  transactions: [],
+  loadTransactionList: () => {},
+  statusDictionary: {},
 };
 
 List.propTypes = {
-  transactions: arrayOf(shape({ status: string, amount: number, date: string }))
-    .isRequired,
-  amount: number.isRequired,
-  amountTransactions: number.isRequired,
+  loadTransactionList: func.isRequired,
 };
 
 export default List;
