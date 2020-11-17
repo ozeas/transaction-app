@@ -1,7 +1,7 @@
 import faker from 'faker';
 
 import RemoteListTransactions from './remote-list-transactions';
-import { httpGetClientMock } from '../test/remote-list-transactions-mock';
+import { httpGetClientMock } from '../test/remote-transactions-mock';
 
 describe('RemoteListTransactions', () => {
   const url = faker.internet.url;
