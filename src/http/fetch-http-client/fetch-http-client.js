@@ -23,7 +23,13 @@ class FetchHttpClient {
       response = await result;
       body = await response.json();
     } catch (error) {
-      response = error;
+      if (error.name === 'AbortError') {
+        response = {
+          status: 408,
+        };
+      } else {
+        response = error;
+      }
     }
 
     return {
