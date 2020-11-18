@@ -1,4 +1,4 @@
-import InvalidListTransactionsError from '@domain/transaction/list-transactions/errors/invalid-list-transactions-error';
+import InvalidListTransactionsError from '@domain/transaction/errors/invalid-list-transactions-error';
 import httpStatusCode from '@data/http/http-status-code';
 
 class RemoteListTransactions {
