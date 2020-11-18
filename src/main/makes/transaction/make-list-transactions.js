@@ -3,7 +3,7 @@ import { makeHostApi, makeFetchClient } from '@main/makes';
 import { ListTransactions } from '@domain/transaction';
 
 const remoteListTransaction = new RemoteListTransactions(
-  makeHostApi('transactions'),
+  makeHostApi('transactions?_sort=id&_order=desc'),
   makeFetchClient().request
 );
 
