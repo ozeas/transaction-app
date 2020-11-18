@@ -12,6 +12,7 @@ const Icon = ({ name, titleAccess, path, ...rest }) => {
 
   return (
     <SVG
+      data-testid="icon"
       viewBox="0 0 20 20"
       focusable="false"
       aria-hidden={hasTitle ? undefined : true}

@@ -2,21 +2,18 @@ import React from 'react';
 import { fireEvent } from '@testing-library/react';
 
 import Button from './button';
+import { screen } from '@testing-library/react';
 import { renderWithTheme } from '@test/utils';
 import { theme } from '@style-tokens';
 
 const makeComponent = (props = {}) =>
-  renderWithTheme(
-    <Button data-testid="button" {...props}>
-      Basic Button
-    </Button>
-  );
+  renderWithTheme(<Button {...props}>Basic Button</Button>);
 
 describe('Button', () => {
   it('should render component correctly', () => {
-    const { getByTestId } = makeComponent();
+    makeComponent();
 
-    expect(getByTestId('button')).toHaveStyle(`
+    expect(screen.getByRole('button')).toHaveStyle(`
       color: ${theme.colors.white};
       background-color: ${theme.colors.purple200};
       cursor: pointer;
@@ -24,14 +21,14 @@ describe('Button', () => {
   });
 
   it('should render button with icon', () => {
-    const { container } = makeComponent({ icon: 'add-fill' });
+    makeComponent({ icon: 'add-fill' });
 
-    expect(container.querySelector('svg').tagName).toBe('svg');
+    expect(screen.getByTestId('icon')).toBeInTheDocument();
   });
 
   it('should render button as disabled', () => {
-    const { container } = makeComponent({ disabled: true });
-    const button = container.querySelector('button');
+    makeComponent({ disabled: true });
+    const button = screen.getByRole('button');
 
     expect(button.disabled).toBeTruthy();
     expect(button).toHaveStyle(`
@@ -43,16 +40,16 @@ describe('Button', () => {
 
   it('should not call function on onClick with disabled button', () => {
     const onClick = jest.fn();
-    const { getByText } = makeComponent({ onClick, disabled: true });
-    fireEvent.click(getByText(/Basic Button/));
+    makeComponent({ onClick, disabled: true });
+    fireEvent.click(screen.getByText(/Basic Button/));
 
     expect(onClick).toHaveBeenCalledTimes(0);
   });
 
   it('should call function on onClick event button', () => {
     const onClick = jest.fn();
-    const { getByText } = makeComponent({ onClick });
-    fireEvent.click(getByText(/Basic Button/));
+    makeComponent({ onClick });
+    fireEvent.click(screen.getByText(/Basic Button/));
 
     expect(onClick).toHaveBeenCalledTimes(1);
   });
