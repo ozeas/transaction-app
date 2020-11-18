@@ -6,9 +6,24 @@ import { Container, Header, Main } from '@presentation/pages/components';
 import { ListHeader, TransactionItem } from './components';
 import useLoadTransactions from './hooks/use-load-transactions';
 
+const getTransactionsValues = (transactionsAll) => {
+  const amount = transactionsAll.reduce(
+    (acc, actual) => (actual.amount ? acc + parseFloat(actual.amount) : acc),
+    0
+  );
+
+  const amountTransactions = transactionsAll.length;
+
+  return {
+    amount,
+    amountTransactions,
+  };
+};
+
 const List = ({ loadTransactionList }) => {
-  const { amount, amountTransactions, transactions } = useLoadTransactions(
-    loadTransactionList
+  const { transactionsList } = useLoadTransactions(loadTransactionList);
+  const { amount = 0, amountTransactions = 0 } = getTransactionsValues(
+    transactionsList
   );
 
   return (
@@ -19,9 +34,9 @@ const List = ({ loadTransactionList }) => {
         </Flex>
       </Header>
       <Main>
-        {transactions.length ? (
-          transactions.map((item) => (
-            <TransactionItem key={item.id} {...item} />
+        {transactionsList.length ? (
+          transactionsList.map(({ id, amount, ...props }) => (
+            <TransactionItem key={id} amount={parseFloat(amount)} {...props} />
           ))
         ) : (
           <Flex m={4} justifyContent="center">
