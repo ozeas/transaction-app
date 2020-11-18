@@ -3,14 +3,19 @@ import { ThemeProvider } from 'styled-components';
 import { render } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import faker from 'faker';
+import { RecoilRoot } from 'recoil';
+import { Router } from 'react-router-dom';
+import { createMemoryHistory } from 'history';
 
 import theme from '@presentation/style-tokens/theme';
 
 export const renderWithTheme = (component) =>
   render(
-    <ThemeProvider theme={theme}>
-      <MemoryRouter>{component}</MemoryRouter>
-    </ThemeProvider>
+    <RecoilRoot>
+      <ThemeProvider theme={theme}>
+        <MemoryRouter>{component}</MemoryRouter>
+      </ThemeProvider>
+    </RecoilRoot>
   );
 
 export const generateSequence = (length) => {
@@ -20,4 +25,17 @@ export const generateSequence = (length) => {
   }
 
   return sequence.join('');
+};
+
+export const renderWithRouter = (
+  ui,
+  {
+    route = '/',
+    history = createMemoryHistory({ initialEntries: [route] }),
+  } = {}
+) => {
+  return {
+    ...renderWithTheme(<Router history={history}>{ui}</Router>),
+    history,
+  };
 };
