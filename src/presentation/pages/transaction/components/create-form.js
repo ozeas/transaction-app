@@ -4,7 +4,10 @@ import { func } from 'prop-types';
 import { useRecoilState } from 'recoil';
 import { useHistory } from 'react-router-dom';
 
-import { transactionListAtom } from '@presentation/atoms/atoms';
+import {
+  transactionListAtom,
+  warningApplicationAtom,
+} from '@presentation/atoms/atoms';
 import { Box, Button, Flex, Input } from '@components';
 import { fields } from './utils';
 
@@ -14,6 +17,7 @@ const CreateForm = ({ createTransaction }) => {
     mode: 'onChange',
   });
   const [, setTransactionList] = useRecoilState(transactionListAtom);
+  const [, setWarning] = useRecoilState(warningApplicationAtom);
 
   const onSubmit = async (data) => {
     try {
@@ -27,7 +31,17 @@ const CreateForm = ({ createTransaction }) => {
       ]);
       history.push('/list');
     } catch (e) {
-      console.log(e);
+      setWarning({
+        enable: true,
+        message: 'Houve um erro ao salvar a transação!',
+      });
+    } finally {
+      setTimeout(() => {
+        setWarning({
+          enable: false,
+          message: '',
+        });
+      }, 3000);
     }
   };
 
