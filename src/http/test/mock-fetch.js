@@ -25,6 +25,11 @@ export const mockHttpRequestError = {
   body: undefined,
 };
 
+export const mockHttpRequestTimeoutError = {
+  status: 408,
+  body: undefined,
+};
+
 export const mockHttpRequest = {
   url: faker.internet.url(),
   method: faker.random.word(),

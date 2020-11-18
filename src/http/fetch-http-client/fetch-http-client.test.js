@@ -1,6 +1,7 @@
 import {
   mockHttpResponse,
   mockHttpRequestError,
+  mockHttpRequestTimeoutError,
   mockHttpRequest,
   mockFetchHttpClient,
 } from '@http/test/mock-fetch';
@@ -12,18 +13,16 @@ describe('FetchHttpClient', () => {
     window.fetch.mockResolvedValueOnce(mockHttpResponse);
 
     const instance = mockFetchHttpClient();
-    const params = {
-      url: mockHttpRequest.url,
-      method: mockHttpRequest.method,
-    };
 
-    await instance.request(params);
+    const params = {
+      method: mockHttpRequest.method,
+      signal: {},
+      mode: 'cors',
+    };
+    await instance.request({ url: mockHttpRequest.url, ...params });
 
     expect(window.fetch).toHaveBeenCalledTimes(1);
-    expect(window.fetch).toHaveBeenCalledWith(mockHttpRequest.url, {
-      mode: 'cors',
-      method: params.method,
-    });
+    expect(window.fetch).toHaveBeenCalledWith(mockHttpRequest.url, params);
   });
 
   it('should return correct response', async () => {
@@ -41,5 +40,13 @@ describe('FetchHttpClient', () => {
     const instance = mockFetchHttpClient();
     const responseMock = await instance.request(mockHttpRequest);
     expect(responseMock).toEqual(mockHttpRequestError);
+  });
+
+  it('should return correct error when timeout', async () => {
+    window.fetch.mockResolvedValueOnce(Promise.reject({ status: 408 }));
+
+    const instance = mockFetchHttpClient();
+    const responseMock = await instance.request(mockHttpRequest);
+    expect(responseMock).toEqual(mockHttpRequestTimeoutError);
   });
 });
