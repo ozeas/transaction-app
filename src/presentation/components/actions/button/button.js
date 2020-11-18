@@ -26,7 +26,6 @@ Button.defaultProps = {
   disabled: false,
   func: () => {},
   icon: null,
-  width: '320px',
 };
 
 Button.propTypes = {
@@ -34,7 +33,6 @@ Button.propTypes = {
   disabled: bool,
   icon: string,
   onClick: func,
-  width: string,
 };
 
 export default Button;

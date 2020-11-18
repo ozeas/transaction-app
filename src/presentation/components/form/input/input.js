@@ -55,7 +55,6 @@ Input.defaultProps = {
   mode: 'default',
   onChange: () => {},
   type: 'text',
-  width: '320px',
 };
 
 Input.propTypes = {
@@ -65,7 +64,6 @@ Input.propTypes = {
   mode: oneOf(['default', 'masked']),
   onChange: func,
   type: string,
-  width: string,
 };
 
 export default Input;

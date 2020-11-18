@@ -9,13 +9,21 @@ export default {
 const Template = (args) => <Button {...args} />;
 
 export const BasicUsage = Template.bind({});
-BasicUsage.args = { children: 'Default button' };
+BasicUsage.args = { children: 'Default button', width: '320px' };
 BasicUsage.storyName = 'Basic usage';
 
 export const UsageWithIcon = Template.bind({});
-UsageWithIcon.args = { children: 'With icon', icon: 'add-fill' };
+UsageWithIcon.args = {
+  children: 'With icon',
+  icon: 'add-fill',
+  width: '320px',
+};
 UsageWithIcon.storyName = 'With icon';
 
 export const UsageDisabled = Template.bind({});
-UsageDisabled.args = { children: 'Disabled button', disabled: true };
+UsageDisabled.args = {
+  children: 'Disabled button',
+  disabled: true,
+  width: '320px',
+};
 UsageDisabled.storyName = 'With disabled';
