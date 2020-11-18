@@ -1,16 +1,34 @@
 import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { func } from 'prop-types';
+import { useRecoilState } from 'recoil';
+import { useHistory } from 'react-router-dom';
 
+import { transactionListAtom } from '@presentation/atoms/atoms';
 import { Box, Button, Flex, Input } from '@components';
 import { fields } from './utils';
 
 const CreateForm = ({ createTransaction }) => {
+  const history = useHistory();
   const { trigger, register, handleSubmit, setValue, formState } = useForm({
     mode: 'onChange',
   });
+  const [, setTransactionList] = useRecoilState(transactionListAtom);
+
   const onSubmit = async (data) => {
-    await createTransaction(data);
+    try {
+      const result = await createTransaction(data);
+      setTransactionList((oldTransactions) => [
+        {
+          ...data,
+          ...result,
+        },
+        ...oldTransactions,
+      ]);
+      history.push('/list');
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   useEffect(() => {

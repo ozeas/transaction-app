@@ -1,7 +1,12 @@
 import React from 'react';
-import { fireEvent, waitForElement, act } from '@testing-library/react';
+import {
+  fireEvent,
+  waitForElement,
+  act,
+  cleanup,
+} from '@testing-library/react';
 
-import { renderWithTheme } from '@test/utils';
+import { renderWithTheme, renderWithRouter } from '@test/utils';
 import CreateForm from './create-form';
 import {
   randomInputName,
@@ -21,7 +26,11 @@ const setFilledInputs = async (container) => {
   }
 };
 
+afterEach(cleanup);
+
 describe('CreateForm', () => {
+  jest.spyOn(window, 'fetch');
+
   const makeComponent = () =>
     renderWithTheme(<CreateForm createTransaction={mockCreateTransaction} />);
 
@@ -77,5 +86,37 @@ describe('CreateForm', () => {
 
     expect(mockCreateTransaction).toHaveBeenCalledWith(fieldsWitchInputsValues);
     expect(mockCreateTransaction).toHaveBeenCalledTimes(1);
+  });
+
+  it('should not redirect when error response post request', async () => {
+    const createTransaction = () => Promise.reject();
+
+    const { history, getByRole, container } = renderWithRouter(
+      <CreateForm createTransaction={createTransaction} />
+    );
+
+    await setFilledInputs(container);
+
+    await act(
+      async () => await fireEvent.click(getByRole('button', { type: 'submit' }))
+    );
+
+    expect(history.location.pathname).toEqual('/');
+  });
+
+  it('should redirect when success post request', async () => {
+    const createTransaction = () => Promise.resolve();
+
+    const { history, getByRole, container } = renderWithRouter(
+      <CreateForm createTransaction={createTransaction} />
+    );
+
+    await setFilledInputs(container);
+
+    await act(
+      async () => await fireEvent.click(getByRole('button', { type: 'submit' }))
+    );
+
+    expect(history.location.pathname).toEqual('/list');
   });
 });
