@@ -55,7 +55,7 @@ yarn dev
 
 OBS: crie o arquivo .env em seu repositório local com o host que o serviço json-server api foi configurado
 
-```env
+```yaml
 REACT_APP_API_URL=http://localhost:3000
 ```
 
@@ -76,7 +76,8 @@ yarn build
 
 ### Publicação
 
-Este projeto está configurado para publicação automática no netlify
+Este projeto está configurado para publicação automática no netlify, veja mais detalhes:
+[https://www.netlify.com/blog/2016/07/22/deploy-react-apps-in-less-than-30-seconds/](https://www.netlify.com/blog/2016/07/22/deploy-react-apps-in-less-than-30-seconds/ 'https://www.netlify.com/blog/2016/07/22/deploy-react-apps-in-less-than-30-seconds/')
 
 ## Testes
 

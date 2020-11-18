@@ -36,6 +36,14 @@ const useLoadTransactions = (loadTransactions) => {
             enable: true,
             message: 'Houve erro ao carregar os dados!',
           });
+        })
+        .finally(() => {
+          setTimeout(() => {
+            setWarning({
+              enable: false,
+              message: '',
+            });
+          }, 5000);
         });
     }
   }, []);
