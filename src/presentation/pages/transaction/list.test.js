@@ -1,5 +1,5 @@
 import React from 'react';
-import { act } from '@testing-library/react';
+import { act, waitForElement } from '@testing-library/react';
 
 import { renderWithTheme } from '@test/utils';
 import List from './list';
@@ -31,5 +31,20 @@ describe('List', () => {
 
     expect(queryAllByTestId(/transactions-list/i).length).toBe(2);
     expect(queryByText(/Não há transações cadastradas!/i)).toBeNull();
+  });
+
+  it('should show warning message when error load transactions', async () => {
+    const { getByText } = makeComponent({
+      loadTransactionList: jest.fn().mockRejectedValue(),
+    });
+
+    const message = await waitForElement(
+      () => getByText(/Houve erro ao carregar os dados/),
+      {
+        timeout: 10,
+      }
+    );
+
+    expect(message).toBeInTheDocument();
   });
 });
