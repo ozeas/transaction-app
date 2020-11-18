@@ -1,43 +1,35 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
+import { useRecoilState } from 'recoil';
+
+import { transactionListAtom } from '@presentation/atoms/atoms';
 
 const useLoadTransactions = (loadTransactions) => {
-  const [result, setResult] = useState({
-    amount: 0,
-    amountTransactions: 0,
-    transactions: [],
-  });
+  const [transactionsList, setTransactionsList] = useRecoilState(
+    transactionListAtom
+  );
+
+  const hasTransactions = !!transactionsList.length;
 
   useEffect(() => {
-    loadTransactions().then((transactions) => {
-      if (!transactions.length) {
-        return;
-      }
+    if (!hasTransactions) {
+      loadTransactions().then((transactions) => {
+        if (!transactions.length) {
+          return;
+        }
 
-      const filteredTransactions = transactions.filter(
-        (item) =>
-          item.amount && item.credit_card_holder_name && item.credit_card_cvv
-      );
-
-      const amount = filteredTransactions.reduce(
-        (acc, actual) =>
-          actual.amount ? acc + parseFloat(actual.amount) : acc,
-        0
-      );
-
-      const amountTransactions = filteredTransactions.length;
-
-      setResult({
-        amount,
-        amountTransactions,
-        transactions: transactions.filter(
+        const filteredTransactions = transactions.filter(
           (item) =>
             item.amount && item.credit_card_holder_name && item.credit_card_cvv
-        ),
+        );
+
+        setTransactionsList(() => filteredTransactions);
       });
-    });
+    }
   }, []);
 
-  return result;
+  return {
+    transactionsList,
+  };
 };
 
 export default useLoadTransactions;
