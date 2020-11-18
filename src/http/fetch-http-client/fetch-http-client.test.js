@@ -18,6 +18,10 @@ describe('FetchHttpClient', () => {
       method: mockHttpRequest.method,
       signal: {},
       mode: 'cors',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
     };
     await instance.request({ url: mockHttpRequest.url, ...params });
 

@@ -12,6 +12,10 @@ class FetchHttpClient {
         method,
         mode: 'cors',
         signal: controller.signal,
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
         ...props,
       });
       clearTimeout(id);

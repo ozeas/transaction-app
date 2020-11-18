@@ -2,7 +2,7 @@
 
 Aplicação para gerenciamento de transações.
 
-> Publicado em : [https://https://transaction-app-test.netlify.app/](https://https://transaction-app-test.netlify.app/ 'https://https://transaction-app-test.netlify.app/')
+> Publicado em : [https://transaction-app-test.netlify.app/](https://transaction-app-test.netlify.app/ 'https://https://transaction-app-test.netlify.app/')
 
 ## Instalação
 
@@ -26,7 +26,7 @@ yarn
 
 Principais libs e frameworks utilizados no projeto:
 
-- react-scripts@40.0.0
+- react-scripts@4.0.0
 - @testing-library/react
 - react-hook-form
 - @storybook/react
@@ -39,12 +39,24 @@ Principais libs e frameworks utilizados no projeto:
 
 Para configurar o projeto em modo de desenvolvimento, obtenha uma cópia e instalale as dependências:
 
-Aplicação
+json-server api
 
 ```shell
 cd transaction-app/
 yarn server
+```
+
+aplicação web
+
+```shell
+cd transaction-app/
 yarn dev
+```
+
+OBS: crie o arquivo .env em seu repositório local com o host que o serviço json-server api foi configurado
+
+```env
+REACT_APP_API_URL=http://localhost:3000
 ```
 
 Componentes
