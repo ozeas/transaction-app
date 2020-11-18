@@ -1,4 +1,5 @@
 import React from 'react';
+import { screen } from '@testing-library/react';
 
 import { renderWithTheme } from '@test/utils';
 import NetworkWarning from './network-warning';
@@ -19,15 +20,15 @@ describe('NetworkWarning', () => {
 
   it('should render warning when network is offline', () => {
     networkGetter.navigator.onLine = false;
-    const { getByText } = renderWithTheme(<NetworkWarning />);
+    renderWithTheme(<NetworkWarning />);
 
-    expect(getByText(/Ops...você está offline!/)).toBeInTheDocument();
+    expect(screen.getByText(/Ops...você está offline!/)).toBeInTheDocument();
   });
 
   it('should not render warning when network is online', () => {
     networkGetter.navigator.onLine = true;
-    const { queryByText } = renderWithTheme(<NetworkWarning />);
+    renderWithTheme(<NetworkWarning />);
 
-    expect(queryByText(/Ops...você está offline!/i)).toBeNull();
+    expect(screen.queryByText(/Ops...você está offline!/i)).toBeNull();
   });
 });

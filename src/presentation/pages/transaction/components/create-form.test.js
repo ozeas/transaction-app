@@ -4,6 +4,7 @@ import {
   waitForElement,
   act,
   cleanup,
+  screen,
 } from '@testing-library/react';
 
 import { renderWithTheme, renderWithRouter } from '@test/utils';
@@ -19,7 +20,7 @@ const mockCreateTransaction = jest.fn();
 const setFilledInputs = async (container) => {
   for (let field of Object.entries(fieldsWitchInputsValues)) {
     await act(async () => {
-      await fireEvent.change(queryByName(field[0], container), {
+      await fireEvent.change(container.querySelector(`[name=${field[0]}]`), {
         target: { value: field[1] },
       });
     });
@@ -35,11 +36,11 @@ describe('CreateForm', () => {
     renderWithTheme(<CreateForm createTransaction={mockCreateTransaction} />);
 
   it('should disabled button when load empty form', async () => {
-    const { container } = makeComponent();
+    makeComponent();
 
     const submitButton = await waitForElement(
-      () => container.querySelector('button'),
-      { container, timeout: 1 }
+      () => screen.getByRole('button'),
+      { timeout: 1 }
     );
 
     expect(submitButton.disabled).toBe(true);
@@ -51,8 +52,8 @@ describe('CreateForm', () => {
     await setFilledInputs(container);
 
     const submitButton = await waitForElement(
-      () => container.querySelector('button'),
-      { container, timeout: 2000 }
+      () => screen.getByRole('button'),
+      { timeout: 2000 }
     );
 
     expect(submitButton).not.toBeDisabled();
@@ -69,8 +70,8 @@ describe('CreateForm', () => {
     });
 
     const submitButton = await waitForElement(
-      () => container.querySelector('button'),
-      { container, timeout: 1 }
+      () => screen.getByRole('button'),
+      { timeout: 1 }
     );
 
     expect(submitButton.disabled).toBe(true);
@@ -81,7 +82,7 @@ describe('CreateForm', () => {
 
     await setFilledInputs(container);
     await act(async () => {
-      await fireEvent.click(container.querySelector('button'));
+      await fireEvent.click(screen.getByRole('button'));
     });
 
     expect(mockCreateTransaction).toHaveBeenCalledWith(fieldsWitchInputsValues);
