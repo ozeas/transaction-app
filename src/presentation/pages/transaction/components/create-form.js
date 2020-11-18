@@ -24,8 +24,8 @@ const CreateForm = ({ createTransaction }) => {
       const result = await createTransaction(data);
       setTransactionList((oldTransactions) => [
         {
-          ...data,
           ...result,
+          ...data,
         },
         ...oldTransactions,
       ]);

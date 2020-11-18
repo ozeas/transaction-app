@@ -4,7 +4,7 @@ import { themeGet } from '@styled-system/theme-get';
 import { number, string } from 'prop-types';
 
 import { Box, Flex, Text } from '@components';
-import { currencyFormat } from '@presentation/utils';
+import { currencyFormat, dateTimeFormat } from '@presentation/utils';
 import { statusDictionary } from '@domain/transaction/utils';
 
 const Container = styled(Box).attrs({
@@ -15,7 +15,12 @@ const Container = styled(Box).attrs({
   border-bottom: 1px solid ${themeGet('colors.gray20')};
 `;
 
-const TransactionItem = ({ amount, credit_card_holder_name, status }) => (
+const TransactionItem = ({
+  amount,
+  credit_card_holder_name,
+  status,
+  credit_card_pay_date,
+}) => (
   <Container data-testid="transactions-list">
     <Flex justifyContent="space-between">
       <Text fontWeight="bold" color="gray500">
@@ -26,7 +31,7 @@ const TransactionItem = ({ amount, credit_card_holder_name, status }) => (
       </Text>
     </Flex>
     <Flex justifyContent="space-between" mt={2}>
-      <Text fontWeight="regular">10/10/2020 10:30</Text>
+      <Text fontWeight="regular">{dateTimeFormat(credit_card_pay_date)}</Text>
       <Text fontWeight="bold" color="gray700">
         {currencyFormat(amount || 0)}
       </Text>
@@ -34,16 +39,11 @@ const TransactionItem = ({ amount, credit_card_holder_name, status }) => (
   </Container>
 );
 
-TransactionItem.defaultProps = {
-  amount: 0,
-  credit_card_holder_name: '',
-  status: '',
-};
-
 TransactionItem.propTypes = {
   amount: number.isRequired,
   credit_card_holder_name: string.isRequired,
   status: string.isRequired,
+  credit_card_pay_date: string,
 };
 
 export default TransactionItem;
