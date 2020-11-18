@@ -1,33 +1,100 @@
-# Desafio Front-end
+# Transaction App [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](https://github.com/your/your-project/blob/master/LICENSE)
 
-## Sumário
+Aplicação para gerenciamento de transações.
 
-- [Sobre o desafio](./CHALLENGE.md)
-- [Requisitos](#requisitos)
-- [Instalação](#instalação)
-- [Comandos](#comandos)
-
-## Requisitos
-
-- Node v12.18.2 +
-- Yarn v1.22.0 +
+> Publicado em : [https://https://transaction-app-test.netlify.app/](https://https://transaction-app-test.netlify.app/ 'https://https://transaction-app-test.netlify.app/')
 
 ## Instalação
 
-Execute o comando `yarn`.
+Para correta instalação do projeto é necessário as seguintes ferramentas instaladas:
 
-## Rodando a aplicação
+- node >= 12.16.3
+- yarn >= 1.22.4
+- git >= 2.24.1
 
-1. Renomeie o arquivo `db.example.json` para `db.json`;
-1. Execute `yarn server` para executar a API;
-1. Execute `yarn start` para rodar a aplicação React.
+### Instalação local
 
-## Comandos
+Para instalar uma cópia local do projeto:
 
-O produto deve ser construído na base provida aqui. Para conhecer os comandos disponíveis, visite o `package.json`, mas seguem alguns comandos abaixo:
+```shell
+git clone git@github.com:ozeas/transaction-app.git
+cd transaction-app
+yarn
+```
 
-- `yarn start`: executa o projeto
-- `yarn build`: cria o build para produção
-- `yarn test`: executa os testes
-- `yarn server`: executa a api para usar com o projeto
-  - Precisa que o arquivo `db.example.json` seja renomeado para `db.json`.
+## Desenvolvimento
+
+Principais libs e frameworks utilizados no projeto:
+
+- react-scripts@40.0.0
+- @testing-library/react
+- react-hook-form
+- @storybook/react
+- styled-components
+- styled-system
+- rebass
+- recoil
+
+### Ambiente de desenvolvimento
+
+Para configurar o projeto em modo de desenvolvimento, obtenha uma cópia e instalale as dependências:
+
+Aplicação
+
+```shell
+cd transaction-app/
+yarn server
+yarn dev
+```
+
+Componentes
+
+```shell
+cd transaction-app/
+yarn storybook
+```
+
+### Build
+
+Build geral dos pacotes do projeto:
+
+```shell
+yarn build
+```
+
+### Publicação
+
+Este projeto está configurado para publicação automática no netlify
+
+## Testes
+
+Para executar os testes de todos os pacotes:
+
+```shell
+yarn test
+```
+
+Para executar os testes com watching:
+
+```shell
+yarn test:watch
+```
+
+## Style guide
+
+Este projeto faz uso das seguintes ferramentas opinativas de estilo de código:
+
+- prettier
+- eslint
+
+Para checar as regras do style guide:
+
+```shell
+yarn lint
+```
+
+Veja mais em: [Eslint configuration](https://github.com/ozeas/transaction-app/blob/master/.eslintrc 'Eslint configuration')
+
+## Licença
+
+Este projeto utiliza o modelo de licença MIT.

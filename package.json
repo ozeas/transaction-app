@@ -19,7 +19,7 @@
     "styled-system": "^5.1.5"
   },
   "scripts": {
-    "start": "react-app-rewired start",
+    "dev": "react-app-rewired start",
     "build": "react-app-rewired build",
     "eject": "react-app-rewired eject",
     "lint": "eslint src --ext .js,.jsx",
