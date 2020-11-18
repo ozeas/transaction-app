@@ -1,8 +1,8 @@
 import React from 'react';
 import { fireEvent } from '@testing-library/react';
+import { screen } from '@testing-library/react';
 
 import Button from './button';
-import { screen } from '@testing-library/react';
 import { renderWithTheme } from '@test/utils';
 import { theme } from '@style-tokens';
 

@@ -28,9 +28,9 @@ const Input = forwardRef(
         {mode === 'default' ? (
           <InputStyled
             ref={ref}
-            inputRef={(el) => (this.inputElem = el)}
             onChange={handleChange}
             value={value}
+            data-testid="input"
             {...props}
           />
         ) : (
@@ -38,10 +38,11 @@ const Input = forwardRef(
             ref={ref}
             onChange={handleChange}
             value={value}
+            data-testid="input"
             {...props}
           />
         )}
-        <Label htmlFor={id} isActive={isActive}>
+        <Label htmlFor={id} isActive={isActive} data-testid="label">
           {label}
         </Label>
       </Wrapper>
