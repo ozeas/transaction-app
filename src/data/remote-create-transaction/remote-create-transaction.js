@@ -1,4 +1,4 @@
-import InvalidListTransactionsError from '@domain/transaction/list-transactions/errors/invalid-list-transactions-error';
+import { InvalidCreateTransactionError } from '@domain/transaction/errors';
 import httpStatusCode from '@data/http/http-status-code';
 
 class RemoteCreateTransaction {
@@ -17,7 +17,7 @@ class RemoteCreateTransaction {
       case httpStatusCode.created:
         return response.body;
       default:
-        throw new InvalidListTransactionsError(response.status);
+        throw new InvalidCreateTransactionError(response.status);
     }
   }
 }
