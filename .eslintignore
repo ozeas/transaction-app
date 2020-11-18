@@ -3,3 +3,4 @@ node_modules
 coverage
 server
 src/serviceWorker.js
+*.md
