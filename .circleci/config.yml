@@ -4,7 +4,7 @@ orbs:
 jobs:
   build:
     docker:
-      - image: circleci/node:12.9.1-browsers
+      - image: circleci/node:12.10.3-browsers
 
     working_directory: ~/repo
 
