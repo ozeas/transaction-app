@@ -33,7 +33,7 @@ describe('RemoteCreateTransaction', () => {
     });
   });
 
-  test.only.each([
+  test.each([
     [500, 'internal_error'],
     [400, 'notfound_error'],
     [408, 'timeout_error'],

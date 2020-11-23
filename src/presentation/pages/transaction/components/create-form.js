@@ -19,8 +19,13 @@ const CreateForm = ({ createTransaction }) => {
   const [, setTransactionList] = useRecoilState(transactionListAtom);
   const [, setWarning] = useRecoilState(warningApplicationAtom);
 
+  let cleanWarning;
   const onSubmit = async (data) => {
     try {
+      setWarning({
+        enable: true,
+        message: 'Enviando trasanção...',
+      });
       const result = await createTransaction(data);
       setTransactionList((oldTransactions) => [
         {
@@ -29,6 +34,10 @@ const CreateForm = ({ createTransaction }) => {
         },
         ...oldTransactions,
       ]);
+      setWarning({
+        enable: false,
+        message: '',
+      });
       history.push('/list');
     } catch (e) {
       setWarning({
@@ -36,7 +45,7 @@ const CreateForm = ({ createTransaction }) => {
         message: 'Houve um erro ao salvar a transação!',
       });
     } finally {
-      setTimeout(() => {
+      cleanWarning = setTimeout(() => {
         setWarning({
           enable: false,
           message: '',
@@ -53,6 +62,10 @@ const CreateForm = ({ createTransaction }) => {
       fields.currencyConfigs.identifier,
       fields.currencyConfigs.validate
     );
+
+    return () => {
+      clearTimeout(cleanWarning);
+    };
   }, []);
 
   const handleChange = (name, value, removeMask) => {

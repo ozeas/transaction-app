@@ -29,4 +29,20 @@ describe('useLoadTransactions', () => {
       useLoadTransactionsMock.amountTransactions
     );
   });
+
+  it('should not call loadTransaction when transactionList is filled', async () => {
+    const loadTransactions = jest
+      .fn()
+      .mockResolvedValue(useLoadTransactionsMock.transactions);
+
+    const { rerender, waitForNextUpdate } = renderRecoilHook(() =>
+      useLoadTransactions(loadTransactions)
+    );
+
+    await waitForNextUpdate();
+
+    rerender();
+
+    expect(loadTransactions).toHaveBeenCalledTimes(1);
+  });
 });

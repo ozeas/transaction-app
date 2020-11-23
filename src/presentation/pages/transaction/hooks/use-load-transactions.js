@@ -13,9 +13,14 @@ const useLoadTransactions = (loadTransactions) => {
   const [, setWarning] = useRecoilState(warningApplicationAtom);
 
   const hasTransactions = !!transactionsList.length;
+  let cleanWarning;
 
   useEffect(() => {
     if (!hasTransactions) {
+      setWarning({
+        enable: true,
+        message: 'Carregando...',
+      });
       loadTransactions()
         .then((transactions) => {
           if (!transactions.length) {
@@ -30,6 +35,10 @@ const useLoadTransactions = (loadTransactions) => {
           );
 
           setTransactionsList(() => filteredTransactions);
+          setWarning({
+            enable: false,
+            message: '',
+          });
         })
         .catch(() => {
           setWarning({
@@ -38,7 +47,7 @@ const useLoadTransactions = (loadTransactions) => {
           });
         })
         .finally(() => {
-          setTimeout(() => {
+          cleanWarning = setTimeout(() => {
             setWarning({
               enable: false,
               message: '',
@@ -46,7 +55,11 @@ const useLoadTransactions = (loadTransactions) => {
           }, 5000);
         });
     }
-  }, []);
+
+    return () => {
+      clearTimeout(cleanWarning);
+    };
+  }, [transactionsList.length]);
 
   return {
     transactionsList,
