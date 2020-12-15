@@ -11,7 +11,7 @@
     "react-hook-form": "^6.11.2",
     "react-number-format": "^4.4.1",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "4.0.0",
+    "react-scripts": "4.0.1",
     "rebass": "^4.0.7",
     "recoil": "^0.1.2",
     "snyk": "^1.424.4",
