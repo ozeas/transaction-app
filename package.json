@@ -14,7 +14,6 @@
     "react-scripts": "4.0.0",
     "rebass": "^4.0.7",
     "recoil": "^0.1.2",
-    "snyk": "^1.424.4",
     "styled-components": "^5.2.1",
     "styled-system": "^5.1.5"
   },
