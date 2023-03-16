@@ -1,6 +1,6 @@
 # Transaction App [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](https://github.com/your/your-project/blob/master/LICENSE)
 
-Aplicação para gerenciamento de transações.
+Aplicação para gerenciamento de transações
 
 > Publicado em : [https://transaction-app-test.netlify.app/](https://transaction-app-test.netlify.app/ 'https://https://transaction-app-test.netlify.app/')
 
